@@ -72,11 +72,11 @@ concessionaria gerenciar::criarconcessionaria(){
 }
 
 concessionaria gerenciar::criarconcessionariaCSV(){
+	concessionaria var;
+	double preco1;
+	int motor1,modelo1,carga1;
 	string arq,NOMECONC,PRIMEIRO,SOBRENOME,CNPJ,MARCA,PRECO,CHASSI,MOTOR,MODELO,CARGA; 
-	concessionaria aux;
-	int motorr,modeloo,cargaa;
-	string NOMECONC_,primeiroAux, sobrenomeAux,cnpjAux;
-	double precoo;	
+	string NOMECONC_,primeiroAux, sobrenomeAux,cnpjAux;	
 	vector<automovel*> listaCarro;
 	vector<moto*> listaMoto;
 	vector<caminhao*> listaCam;
@@ -142,25 +142,25 @@ concessionaria gerenciar::criarconcessionariaCSV(){
 			
 			if (CNPJ != "" && CNPJ != "CNPJ" && PRIMEIRO != "" && PRIMEIRO != "NOME" ){			
 					concessionaria *Conc = new concessionaria(NOMECONC_,primeiroAux,sobrenomeAux,cnpjAux,listaCarro,listaMoto,listaCam);
-					aux = *Conc;
+					var = *Conc;
 					listaLoja.push_back(Conc);				
 				}
 			else{
 				if (MOTOR != "" and MOTOR != "MOTOR"){
-				motorr = stoi(string (MOTOR));	
-				precoo = stod(string (PRECO));	
-				Conc->add_automovel(MARCA, precoo, CHASSI,motorr);	
+				motor1 = stoi(string (MOTOR));	
+				preco1 = stod(string (PRECO));	
+				Conc->add_automovel(MARCA, preco1, CHASSI,motor1);	
 							
 				}
 				else if (MODELO != "" and MODELO != "MODELO"){
-					modeloo = stoi(string (MODELO));	
-					precoo = stod(string (PRECO));	
-					Conc->add_moto(MARCA,precoo, CHASSI,modeloo);				
+					modelo1 = stoi(string (MODELO));	
+					preco1 = stod(string (PRECO));	
+					Conc->add_moto(MARCA,preco1, CHASSI,modelo1);				
 				}
 				else if (CARGA != "" and CARGA != "CARGA"){
-					cargaa = stoi(string (CARGA));	
-					precoo = stod(string (PRECO));	
-					Conc->add_caminhao(MARCA,precoo, CHASSI,cargaa);				
+					carga1 = stoi(string (CARGA));	
+					preco1 = stod(string (PRECO));	
+					Conc->add_caminhao(MARCA,preco1, CHASSI,carga1);				
 				}
 			}	
 		}
@@ -173,7 +173,7 @@ concessionaria gerenciar::criarconcessionariaCSV(){
 		cout << "Erro ao abrir arquivo. Verifique se o nome esta correto. "<< endl;	
 	}
 
-	return aux;
+	return var;
 	
 }
 

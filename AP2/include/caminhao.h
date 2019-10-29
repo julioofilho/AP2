@@ -21,7 +21,6 @@ class caminhao : public veiculo{
 		
 
 	public: 
-		//static int numeroCarros;
 
 		caminhao();
 		caminhao(string marca, double preco, string chassi, int tipo_carga_);	

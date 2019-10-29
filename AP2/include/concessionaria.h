@@ -33,12 +33,7 @@ private:
 public:
 	static int numeroConc;
 
-	//construtor
 	concessionaria();
-
-	// destrutor
-//	~concessionaria();
-
 
 	concessionaria(string nome_,string cnpj_, const vector<automovel*>listaCarro,const vector<moto*>listaMoto,const vector<caminhao*>listaCam);
 	concessionaria(string nome_, string primeiro_nome_,string sobrenome_,string cnpj_, const vector<automovel*>listaCarro,const vector<moto*>listaMoto,const vector<caminhao*>listaCam);

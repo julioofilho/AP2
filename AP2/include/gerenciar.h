@@ -23,8 +23,6 @@ private:
 	vector <concessionaria*> listaLoja;
 
 public:
-	//gerenciar();
-	//~gerenciar();
 	
 	bool listarConcessionarias();
 	concessionaria criarconcessionaria();

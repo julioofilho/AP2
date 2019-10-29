@@ -23,21 +23,16 @@ class automovel : public veiculo{
 
 //Getters e Setters
 	public: 
-		//static int numeroCarros;
 
 		automovel();
 		automovel(string marca, double preco, string chassi, int tipo_motor);
 		automovel(string marca, double preco, string chassi, int tipo_motor,string data_);
-		//~automovel();
 		int getTipo_motor();
 		void setTipo_motor(int motor_);
 
 		friend ostream& operator << (ostream &o, automovel &veiculo);
 		friend ofstream& operator << (ofstream &o, automovel &veiculo);
-		//bool operator==(const automovel &autom) const;
-
-		//bool operator==(const string &marca) const;
-	
+		
 };
 
 

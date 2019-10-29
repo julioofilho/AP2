@@ -75,8 +75,8 @@ concessionaria gerenciar::criarconcessionariaCSV(){
 	concessionaria var;
 	double preco1;
 	int motor1,modelo1,carga1;
-	string arq,NOMECONC,PRIMEIRO,SOBRENOME,CNPJ,MARCA,PRECO,CHASSI,MOTOR,MODELO,CARGA; 
-	string NOMECONC_,primeiroAux, sobrenomeAux,cnpjAux;	
+	string arq,nomeconcA,primeiroA,sobrenomeA,cnpjA,marcaA,precoA,chassiA,motorA,modeloA,cargaA; 
+	string nomeconc_,primeiroAux, sobrenomeAux,cnpjAux;	
 	vector<automovel*> listaCarro;
 	vector<moto*> listaMoto;
 	vector<caminhao*> listaCam;
@@ -85,39 +85,41 @@ concessionaria gerenciar::criarconcessionariaCSV(){
 	cin>>arq;
 	
 	ifstream arquivoE;
+	
 	arquivoE.open(arq+".csv");	
+	
 	if(arquivoE.is_open()){		
 		while(arquivoE.good()){
-			getline	(arquivoE,NOMECONC,';');
-			getline	(arquivoE,PRIMEIRO,';');
-			getline	(arquivoE,SOBRENOME,';');
-			getline	(arquivoE,CNPJ,';');
-			getline	(arquivoE,MARCA,';');
-			getline	(arquivoE,PRECO,';');
-			getline	(arquivoE,CHASSI,';');
-			getline	(arquivoE,MOTOR,';');
-			getline	(arquivoE,MODELO,';');
-			getline	(arquivoE,CARGA,';');
+			getline	(arquivoE,nomeconcA,'/');
+			getline	(arquivoE,primeiroA,'/');
+			getline	(arquivoE,sobrenomeA,'/');
+			getline	(arquivoE,cnpjA,'/');
+			getline	(arquivoE,marcaA,'/');
+			getline	(arquivoE,precoA,'/');
+			getline	(arquivoE,chassiA,'/');
+			getline	(arquivoE,motorA,'/');
+			getline	(arquivoE,modeloA,'/');
+			getline	(arquivoE,cargaA,'/');
 	
 			
 			
-			if (CNPJ != "" && CNPJ != "CNPJ"){
-				NOMECONC_= NOMECONC;
-				cnpjAux = CNPJ;
+			if (cnpjA != "" && cnpjA != "CNPJ"){
+				nomeconc_= nomeconcA;
+				cnpjAux = cnpjA;
 				primeiroAux = "";
 				sobrenomeAux = "";
 				break;		
 			}
-			else if(PRIMEIRO != "" && PRIMEIRO != "NOME" ){
+			else if(primeiroA != "" && primeiroA != "NOME" ){
 				cnpjAux = "";
-				NOMECONC_= NOMECONC;
-				primeiroAux = PRIMEIRO;
-				sobrenomeAux = SOBRENOME;
+				nomeconc_= nomeconcA;
+				primeiroAux = primeiroA;
+				sobrenomeAux = sobrenomeA;
 				break;		
 			}
 		}
 		for (vector<concessionaria*>::iterator it = listaLoja.begin(); it != listaLoja.end(); ++it){
-			if ((**it).get_nome()== NOMECONC_){
+			if ((**it).get_nome()== nomeconc_){
 				cout << endl << "Concessionaria ja cadastrado. Operacao CANCELADA!" << endl;
 				return **it;
 				arquivoE.close();
@@ -125,42 +127,43 @@ concessionaria gerenciar::criarconcessionariaCSV(){
 		}
 		if(arquivoE.is_open()){
 	
-		concessionaria *Conc = new concessionaria(NOMECONC_,primeiroAux,sobrenomeAux,cnpjAux,listaCarro,listaMoto,listaCam);
+		concessionaria *Conc = new concessionaria(nomeconc_,primeiroAux,sobrenomeAux,cnpjAux,listaCarro,listaMoto,listaCam);
 		listaLoja.push_back(Conc);		
+	 	
 	 	while(arquivoE.good()){
-			getline	(arquivoE,NOMECONC,';');
-			getline	(arquivoE,PRIMEIRO,';');
-			getline	(arquivoE,SOBRENOME,';');
-			getline	(arquivoE,CNPJ,';');
-			getline	(arquivoE,MARCA,';');
-			getline	(arquivoE,PRECO,';');
-			getline	(arquivoE,CHASSI,';');
-			getline	(arquivoE,MOTOR,';');
-			getline	(arquivoE,MODELO,';');
-			getline	(arquivoE,CARGA,';');
+			getline	(arquivoE,nomeconcA,'/');
+			getline	(arquivoE,primeiroA,'/');
+			getline	(arquivoE,sobrenomeA,'/');
+			getline	(arquivoE,cnpjA,'/');
+			getline	(arquivoE,marcaA,'/');
+			getline	(arquivoE,precoA,'/');
+			getline	(arquivoE,chassiA,'/');
+			getline	(arquivoE,motorA,'/');
+			getline	(arquivoE,modeloA,'/');
+			getline	(arquivoE,cargaA,'/');
 			
 			
-			if (CNPJ != "" && CNPJ != "CNPJ" && PRIMEIRO != "" && PRIMEIRO != "NOME" ){			
-					concessionaria *Conc = new concessionaria(NOMECONC_,primeiroAux,sobrenomeAux,cnpjAux,listaCarro,listaMoto,listaCam);
+			if (cnpjA != "" && cnpjA != "CNPJ" && primeiroA != "" && primeiroA != "NOME" ){			
+					concessionaria *Conc = new concessionaria(nomeconc_,primeiroAux,sobrenomeAux,cnpjAux,listaCarro,listaMoto,listaCam);
 					var = *Conc;
 					listaLoja.push_back(Conc);				
 				}
 			else{
-				if (MOTOR != "" and MOTOR != "MOTOR"){
-				motor1 = stoi(string (MOTOR));	
-				preco1 = stod(string (PRECO));	
-				Conc->add_automovel(MARCA, preco1, CHASSI,motor1);	
+				if (motorA != "" and motorA != "MOTOR"){
+				motor1 = stoi(string (motorA));	
+				preco1 = stod(string (precoA));	
+				Conc->add_automovel(marcaA, preco1, chassiA,motor1);	
 							
 				}
-				else if (MODELO != "" and MODELO != "MODELO"){
-					modelo1 = stoi(string (MODELO));	
-					preco1 = stod(string (PRECO));	
-					Conc->add_moto(MARCA,preco1, CHASSI,modelo1);				
+				else if (modeloA != "" and modeloA != "MODELO"){
+					modelo1 = stoi(string (modeloA));	
+					preco1 = stod(string (precoA));	
+					Conc->add_moto(marcaA,preco1,chassiA,modelo1);				
 				}
-				else if (CARGA != "" and CARGA != "CARGA"){
-					carga1 = stoi(string (CARGA));	
-					preco1 = stod(string (PRECO));	
-					Conc->add_caminhao(MARCA,preco1, CHASSI,carga1);				
+				else if (cargaA != "" and cargaA != "CARGA"){
+					carga1 = stoi(string (cargaA));	
+					preco1 = stod(string (precoA));	
+					Conc->add_caminhao(marcaA,preco1, chassiA,carga1);				
 				}
 			}	
 		}
